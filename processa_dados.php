@@ -27,16 +27,12 @@ $campos = array(
 
 // Define as variáveis com os valores do formulário
 foreach ($campos as $campo => $valorPadrao) {
-    if (isset($_POST[$campo])) {
-        $campos[$campo] = $_POST[$campo];
-    }
+    $campos[$campo] = isset($_POST[$campo]) ? $_POST[$campo] : '';
 }
 
 // Transforma os valores das caixas de seleção em uma string separada por vírgula
 foreach (array('ocupacaoSecundaria', 'formaAtuacao') as $campoSelecao) {
-    if (is_array($campos[$campoSelecao])) {
-        $campos[$campoSelecao] = implode(",", $campos[$campoSelecao]);
-    }
+    $campos[$campoSelecao] = is_array($campos[$campoSelecao]) ? implode(",", $campos[$campoSelecao]) : '';
 }
 
 // Insere os dados no banco de dados
@@ -56,4 +52,4 @@ if (mysqli_query($conn, $query)) {
 
 // Fecha a conexão com o banco de dados
 mysqli_close($conn);
-?>
+?> 
