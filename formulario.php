@@ -123,7 +123,7 @@ session_start();
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">* Nome Completo</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="nome" id="nome" />
+                                    <input type="text" class="form-control" name="nome" id="nome" required data-input />
                                 </div>
                             </div>
 
@@ -132,7 +132,7 @@ session_start();
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">* Email</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control " name="email" id="email" class="inputUser" />
+                                    <input type="text" class="form-control " name="email" id="email" class="inputUser" required data-input />
                                 </div>
                             </div>
                             <br>
@@ -141,7 +141,7 @@ session_start();
                             <div class="form-group">
                                 <label class="col-sm-1 control-label">* CPF</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control CampoCPF" name="cpf" id="cpf" />
+                                    <input type="text" class="form-control CampoCPF" name="cpf" id="cpf" required data-input />
                                 </div>
 
                                 <label class="col-sm-1 control-label">Telefone</label>
@@ -150,18 +150,18 @@ session_start();
                                 </div>
                                 <label class="col-sm-1 control-label">* Celular</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control CampoTelefone2" id="celular" name="celular" />
+                                    <input type="text" class="form-control CampoTelefone2" id="celular" name="celular" required data-input />
                                 </div>
                             </div>
                             <br><br><br><br>
                             <div class="form-group">
                                 <label class="col-sm-1 control-label">* RG</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="rg" name="rg" />
+                                    <input type="text" class="form-control" id="rg" name="rg" required data-input />
                                 </div>
                                 <label class="col-sm-1 control-label">* Órgão Emissor</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" maxlength="6" />
+                                    <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" maxlength="6" required data-input />
                                 </div>
                                 <label class="col-sm-1 control-label">* UF Emissor</label>
                                 <div class="col-sm-3">
@@ -209,33 +209,36 @@ session_start();
                                 </div>
                             </div>
                             <br><br><br><br><br>
-                            
-                                <div class="form-group">
-                                    <div class="col-sm-5">
-                                        <label class="control-label">* Escolha a Ocupação Secundária (até 15 opções)</label>
-                                        <div class="dropdown bootstrap-select show-tick form-control">
-                                            <select name="ocupacaoSecundaria" class="selectpicker form-select shadow-none " size="10" id="ocupacaoSecundaria" required data-input data-live-search="true">
-                                                <?php
-                                                $resul_ocupacao = "SELECT * FROM tb_ocupacao";
-                                                $resultado_ocupacoes = mysqli_query($conn, $resul_ocupacao);
-                                                while ($row_ocupacaoS = mysqli_fetch_assoc($resultado_ocupacoes)) {
-                                                    echo '<option value="' . $row_ocupacaoS['id'] . '">' . $row_ocupacaoS['ocupacao'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2" id="botao">
-                                        <button class="btn-style1" onclick="adicionar()">ENVIAR</button>
-                                        <button class="btn-style1" onclick="removerItem()">REMOVER</button>
-                                        <button class="btn-style1" onclick="removerTudo()">REMOVER TUDO</button>
-                                    </div>
-                                    <div class="col-sm-5" id="listbox2">
-                                        <div class="dropdown bootstrap-select show-tick form-control">
-                                            <select id="listBox2" class="selectpicker form-select shadow-none " name="listBox2[]" size="10"></select>
-                                        </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-5">
+                                    <label class="control-label">* Escolha a Ocupação Secundária (até 15 opções)</label>
+                                    <div class="dropdown bootstrap-select show-tick form-control">
+                                        <select name="listBox1" class="selectpicker form-select shadow-none " size="10" id="listBox1">
+                                            <?php
+                                            $resul_ocupacao = "SELECT * FROM tb_ocupacao";
+                                            $resultado_ocupacoes = mysqli_query($conn, $resul_ocupacao);
+                                            while ($row_ocupacaoS = mysqli_fetch_assoc($resultado_ocupacoes)) {
+                                                echo '<option value="' . $row_ocupacaoS['id'] . '">' . $row_ocupacaoS['ocupacao'] . '</option>';
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
+                                <div class="col-sm-2" id="botao">
+                                    <button type="button" class="btn-style1" onclick="adicionar()">ADICIONAR</button>
+                                    <button type="button" class="btn-style1" onclick="removerItem()">REMOVER</button>
+                                    <button type="button" class="btn-style1" onclick="removerTudo()">REMOVER TUDO</button>
+
+                                </div>
+
+                                <div class="col-sm-5" id="listbox2">
+                                    <div class="dropdown bootstrap-select show-tick form-control">
+                                        <select id="listBox2" class="selectpicker form-select shadow-none " name="listBox2[]" size="10"></select>
+                                    </div>
+                                </div>
+                            </div>
 
 
 
@@ -252,7 +255,7 @@ session_start();
                                 }
 
                                 function adicionar() {
-                                    var listBox1 = document.getElementById("ocupacaoSecundaria");
+                                    var listBox1 = document.getElementById("listBox1");
                                     var listBox2 = document.getElementById("listBox2");
                                     var selectedIndex = listBox1.selectedIndex;
 
@@ -295,7 +298,7 @@ session_start();
                                 <label class="col-sm-2 control-label">* Capital Social</label>
                                 <div class="col-sm-3">
                                     <div class="dropdown bootstrap-select show-tick form-control">
-                                        <select name="capital" class="form-select shadow-none" id="capital">
+                                        <select name="capital" class="form-select shadow-none" id="capital" required data-input>
                                             <option value="" selected>Selecione...</option>
                                             <option value="1">R$ 1.000,00</option>
                                             <option value="2">R$ 2.000,00</option>
@@ -314,7 +317,7 @@ session_start();
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">* Forma de Atuação</label>
                                 <div class="col-sm-10">
-                                    <div class="checkbox">
+                                    <div class="checkbox" required data-input>
                                         <label class="bloco">
                                             <input type="checkbox" name="formaAtuacao[]" id="estabelecimento-fixo" value="Estabelecimento fixo">
                                             Estabelecimento fixo
