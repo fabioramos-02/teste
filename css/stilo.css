@@ -1,0 +1,140 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: linear-gradient(
+    to right,
+    rgba(20, 147, 220, 0.555),
+    rgb(17, 54, 71)
+  );
+}
+.box {
+  color: rgb(0, 0, 0);
+  /*position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-25%, -25%); */
+  background-color: rgba(0, 0, 0, 0.473);
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+}
+.EstH3 {
+  margin: 0px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: rgba(17, 54, 71, 0.658);
+}
+.EstH3 h2 {
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+
+  border-bottom: 2px solid #2aa7dd;
+
+  display: flex;
+
+  text-align: left;
+  vertical-align: middle;
+
+  height: auto;
+  line-height: normal;
+
+  font-family: "Open Sans";
+  color: #5abee9;
+  font-size: 22px;
+  font-weight: bold;
+}
+.PgTextoLivre {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+
+  line-height: 2;
+}
+.control-label {
+  color: white;
+  font-size: 17px;
+}
+.bloco {
+  color: white;
+  font-size: 17px;
+  padding: 3px 60px;
+}
+.container .container_interno {
+  margin-top: 25px;
+}
+
+.EstH1 {
+  background: url(../img/banner.jpg) no-repeat center top;
+  margin: 0px;
+  padding: 25px 0px;
+}
+.EstH1 h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
+.btn-style1 {
+  margin: 0px;
+  padding: 10px 20px;
+  border: none;
+  background: #096f97;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  width: auto;
+  height: auto;
+  line-height: normal;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  color: #fff;
+}
+.btn-style1:hover {
+  background: #074d69;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.form-group .form-control {
+    font-size: 20px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    display: block;
+    height: auto;
+    line-height: normal;
+    text-align: left;
+    margin: 0px;
+    padding: 5px;
+}
+.form-group .form-select {
+    font-size: 15px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    border: none;
+    display: block;
+    height: auto;
+    line-height: normal;
+    text-align: left;
+    margin: 0px;
+}
+#botao{
+ padding-top: 50px;
+ 
+}
+#botao button{
+  width: 90%;
+  margin-top: 10px;
+}
+#listbox2{
+  padding-top: 30px;
+}
