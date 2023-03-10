@@ -209,8 +209,7 @@ session_start();
                                 </div>
                             </div>
                             <br><br><br><br><br>
-                            <!-- Formulário HTML -->
-                            <form action="adicionar.php">
+                            
                                 <div class="form-group">
                                     <div class="col-sm-5">
                                         <label class="control-label">* Escolha a Ocupação Secundária (até 15 opções)</label>
@@ -237,7 +236,6 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
-                            </form>
 
 
 
