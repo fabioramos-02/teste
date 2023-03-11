@@ -236,6 +236,7 @@ session_start();
                                 <div class="col-sm-5" id="listbox2">
                                     <div class="dropdown bootstrap-select show-tick form-control">
                                         <select id="listBox2" class="selectpicker form-select shadow-none " name="listBox2[]" size="10"></select>
+                                        
                                     </div>
                                 </div>
                             </div>

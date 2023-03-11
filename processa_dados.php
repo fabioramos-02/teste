@@ -7,7 +7,7 @@ $campos = [
     'nome', 'email', 'cpf', 'telefone', 'celular', 'orgaoEmissor', 'rg',
     'ufEmissor', 'ocupacaoPrincipal', 'capital', 'nomeFantasia',
     'formaAtuacao', 'cep', 'rua', 'bairro', 'complemento', 'numero', 'cidade',
-    'estado'
+    'estado', 'listBox2'
 ];
 
 // Array que irá conter os valores a serem inseridos no banco de dados
@@ -44,9 +44,9 @@ foreach ($campos as $campo) {
 // Monta a string SQL para inserir os dados no banco de dados
 $sql = "INSERT INTO cadastro (";
 $sql .= implode(', ', $campos);
-$sql .= ", ocupacaoSecundaria) VALUES ('";
+$sql .= ") VALUES ('";
 $sql .= implode("', '", $valores);
-$sql .= "', '$ocupacaoSecundaria')";
+$sql .= "')";
 
 // Executa a query SQL
 $resultado = mysqli_query($conn, $sql);
