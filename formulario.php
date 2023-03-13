@@ -220,7 +220,7 @@ session_start();
                                             $resul_ocupacao = "SELECT * FROM tb_ocupacao";
                                             $resultado_ocupacoes = mysqli_query($conn, $resul_ocupacao);
                                             while ($row_ocupacaoS = mysqli_fetch_assoc($resultado_ocupacoes)) {
-                                                echo '<option value="' . $row_ocupacaoS['id'] . '">' . $row_ocupacaoS['ocupacao'] . '</option>';
+                                                echo '<option value="' . $row_ocupacaoS['ocupacao'] . '">' . $row_ocupacaoS['ocupacao'] . '</option>';
                                             }
                                             ?>
                                         </select>
