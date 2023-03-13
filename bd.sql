@@ -33,10 +33,10 @@ CREATE TABLE `cadastro` (
   `celular` varchar(11) NOT NULL,
   `rg` varchar(7) NOT NULL,
   `orgaoEmissor` varchar(45) NOT NULL,
-  `ufEmissor` int(11) NOT NULL,
-  `ocupacaoPrincipal` int(11) NOT NULL,
-  `ocupacaoSecundaria` varchar(300) NOT NULL,
-  `capital` int(11) NOT NULL,
+  `ufEmissor` varchar(20) NOT NULL,
+  `ocupacaoPrincipal` varchar(150) NOT NULL,
+  `listBox2` varchar(500) NOT NULL,
+  `capital` varchar(11) NOT NULL,
   `nomeFantasia` varchar(100) NOT NULL,
   `formaAtuacao` varchar(100) NOT NULL,
   `cep` varchar(7) NOT NULL,
@@ -45,9 +45,9 @@ CREATE TABLE `cadastro` (
   `complemento` varchar(45) DEFAULT NULL,
   `numero` int(11) NOT NULL,
   `cidade` varchar(100) NOT NULL,
-  `estado` int(11) NOT NULL,
+  `estado` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,7 +56,7 @@ CREATE TABLE `cadastro` (
 
 LOCK TABLES `cadastro` WRITE;
 /*!40000 ALTER TABLE `cadastro` DISABLE KEYS */;
-INSERT INTO `cadastro` VALUES (1,'Fabio Willian Lima Ramos','fabiowilliam466@gmail.com','05227892180','679848425','132131','2307390','dsdsd',12,3,'',1,'ola mundo','Estabelecimento fixo, Internet, Porta a porta','7990402','Rua Carlos Augusto Pissini Sobreiro','Vila Ferroviária II','ess',340,'Ponta Porã',12);
+INSERT INTO `cadastro` VALUES (29,'Fabio Willian Lima Ramos','fabiowilliam466@gmail.com','05227892180','+5567984825','984674611','2307390','ssp','Mato Grosso do Sul','Apurador(a), coletor(a) e fornecedor(a) de recorte','','R$ 1.000,00','teste','Estabelecimento fixo, Porta a porta','7990402','Rua Carlos Augusto Pissini Sobreiro','Vila Ferroviária II','casa',340,'Ponta Porã','Mato Grosso do Sul');
 /*!40000 ALTER TABLE `cadastro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-10 18:48:21
+-- Dump completed on 2023-03-13 11:35:45
