@@ -1,0 +1,22 @@
+
+body {
+    background-image: linear-gradient(
+      to right,
+      rgba(20, 147, 220, 0.555),
+      rgb(17, 54, 71)
+    );
+}
+.container-pai{
+    color: rgb(0, 0, 0);
+}
+.tabela-filha{
+    color: rgb(0, 0, 0);
+}
+.titulo{
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 4em;
+}
+.linha:hover {
+    background-color:  rgb(17, 54, 71);
+}

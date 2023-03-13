@@ -172,7 +172,7 @@ session_start();
                                             $resul_estado = "SELECT * FROM tb_estados";
                                             $resultado_estado = mysqli_query($conn, $resul_estado);
                                             while ($row_estado = mysqli_fetch_assoc($resultado_estado)) { ?>
-                                                <option value="<?php echo $row_estado['id'];  ?>"> <?php echo $row_estado['nome']; ?>
+                                                <option value="<?php echo $row_estado['nome'];  ?>"> <?php echo $row_estado['nome']; ?>
                                                 </option> <?php
                                                         }
                                                             ?>
@@ -200,7 +200,7 @@ session_start();
                                             $resul_ocupacao = "SELECT * FROM tb_ocupacao";
                                             $resultado_ocupacao = mysqli_query($conn, $resul_ocupacao);
                                             while ($row_ocupacaoP = mysqli_fetch_assoc($resultado_ocupacao)) { ?>
-                                                <option value="<?php echo $row_ocupacaoP['id'];  ?>"> <?php echo $row_ocupacaoP['ocupacao']; ?>
+                                                <option value="<?php echo $row_ocupacaoP['ocupacao'];  ?>"> <?php echo $row_ocupacaoP['ocupacao']; ?>
                                                 </option> <?php
                                                         }
                                                             ?>
@@ -301,10 +301,10 @@ session_start();
                                     <div class="dropdown bootstrap-select show-tick form-control">
                                         <select name="capital" class="form-select shadow-none" id="capital" required data-input>
                                             <option value="" selected>Selecione...</option>
-                                            <option value="1">R$ 1.000,00</option>
-                                            <option value="2">R$ 2.000,00</option>
-                                            <option value="3">R$ 3.000,00</option>
-                                            <option value="4">R$ 5.000,00</option>
+                                            <option value="R$ 1.000,00">R$ 1.000,00</option>
+                                            <option value="R$ 2.000,00">R$ 2.000,00</option>
+                                            <option value="R$ 3.000,00">R$ 3.000,00</option>
+                                            <option value="R$ 5.000,00">R$ 5.000,00</option>
                                         </select>
                                     </div>
                                 </div>
@@ -413,7 +413,7 @@ session_start();
                                                 $resul_estados = "SELECT * FROM tb_estados";
                                                 $resultado_estados = mysqli_query($conn, $resul_estados);
                                                 while ($row_estados = mysqli_fetch_assoc($resultado_estados)) { ?>
-                                                    <option value="<?php echo $row_estados['id'];  ?>"> <?php echo $row_estados['nome']; ?>
+                                                    <option value="<?php echo $row_estados['nome'];  ?>"> <?php echo $row_estados['nome']; ?>
                                                     </option> <?php
                                                             }
                                                                 ?>
