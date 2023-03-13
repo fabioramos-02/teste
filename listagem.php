@@ -117,7 +117,7 @@
                         <td scope="row"><?php echo $row['nomeFantasia']; ?></td>
                         <td scope="row"><?php echo $row['formaAtuacao']; ?></td>
                         <td scope="row"><?php echo "{$row['rua']} {$row['numero']}, {$row['bairro']} - {$row['cidade']}"; ?></td>
-                        <td scope="row" class="table-secondary">
+                        <td scope="row" class=" text-center table-secondary">
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-alterar-<?php echo $row['id']; ?>">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </button>
