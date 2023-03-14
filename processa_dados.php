@@ -5,9 +5,9 @@ require_once 'config.php';
 // Array com os campos do formulário
 $campos = [
     'nome', 'email', 'cpf', 'telefone', 'celular', 'orgaoEmissor', 'rg',
-    'ufEmissor', 'ocupacaoPrincipal', 'capital', 'nomeFantasia',
+    'ufEmissor', 'ocupacaoPrincipal', 'listBox2','capital', 'nomeFantasia',
     'formaAtuacao', 'cep', 'rua', 'bairro', 'complemento', 'numero', 'cidade',
-    'estado', 'listBox2'
+    'estado'
 ];
 
 // Array que irá conter os valores a serem inseridos no banco de dados
@@ -30,36 +30,49 @@ if (isset($_POST['listBox2'])) {
 // Percorre os campos do formulário e adiciona seus valores ao array de valores
 foreach ($campos as $campo) {
     if (isset($_POST[$campo])) {
+        $valor = trim($_POST[$campo]);
+
         // Verifica se o valor é um array e o converte em string separada por vírgulas
-        if (is_array($_POST[$campo])) {
-            $valores[$campo] = implode(", ", $_POST[$campo]);
-        } else {
-            $valores[$campo] = $_POST[$campo];
+        if (is_array($valor)) {
+            $valor = implode(", ", $valor);
         }
+
+        // Valida o valor do campo antes de adicioná-lo ao array de valores
+        if ($campo == 'email') {
+            if (!filter_var($valor, FILTER_VALIDATE_EMAIL)) {
+                echo "E-mail inválido";
+                exit;
+            }
+        } elseif ($campo == 'cpf') {
+            if (!preg_match('/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/', $valor)) {
+                echo "CPF inválido";
+                exit;
+            }
+        }
+
+        $valores[$campo] = $valor;
     } else {
         $valores[$campo] = '';
     }
 }
 
-// Monta a string SQL para inserir os dados no banco de dados
-$sql = "INSERT INTO cadastro (";
-$sql .= implode(', ', $campos);
-$sql .= ") VALUES ('";
-$sql .= implode("', '", $valores);
-$sql .= "')";
+// Adiciona o valor de forma de atuação e ocupação secundária ao array de valores
+$valores['formaAtuacao'] = $formaAtuacao;
+$valores['listBox2'] = $ocupacaoSecundaria;
 
-// Executa a query SQL
-$resultado = mysqli_query($conn, $sql);
+// Monta a query de inserção no banco de dados
+$sql = "INSERT INTO cadastro (" . implode(',', $campos) . ") VALUES ('" . implode("', '", $valores) . "')";
 
-// Verifica se a query foi executada com sucesso e redireciona para a página de formulário
-if ($resultado) {
+// Executa a query no banco de dados
+if ($conn->query($sql) === TRUE) {
     echo "Dados inseridos com sucesso!";
     header("Location: formulario.php");
     exit;
 } else {
-    echo "Erro ao inserir dados: " . mysqli_error($conn);
+    echo "Erro ao inserir dados: " . $conn->error;
 }
 
+
 // Fecha a conexão com o banco de dados
-mysqli_close($conn);
+$conn->close();
 ?>
