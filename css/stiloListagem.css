@@ -1,0 +1,56 @@
+body {
+  background-image: linear-gradient(
+    to right,
+    rgba(20, 147, 220, 0.555),
+    rgb(17, 54, 71)
+  );
+  font-size: 23px;
+}
+.container-pai {
+  color: rgb(0, 0, 0);
+}
+.tabela-filha {
+  color: rgb(0, 0, 0);
+}
+.titulo {
+  font-weight: bold;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 4em;
+}
+.EstH1 {
+  background: url(../img/banner.jpg) center top;
+  margin: 0px;
+  padding: 25px 0px;
+}
+.EstH1 h1 {
+  text-align: center;
+  font-size: 70px;
+  font-weight: bold;
+  color: white;
+}
+.pesquisar {
+  font-size: 25px;
+}
+.modal-body .form-group input {
+  font-size: 20px;
+}
+.selects {
+  font-size: 20px;
+  display: block;
+  width: 100%;
+}
+.titulo {
+  font-size: 30px;
+  text-align: center;
+}
+.titulo div {
+  background-color: aliceblue;
+  padding-top: 10px;
+}
+.form-check div {
+  font-size: 14px;
+}
+.form-check label {
+  padding-left: 20px;
+  font-size: 14px;
+}

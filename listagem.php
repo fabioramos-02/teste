@@ -10,7 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/stilo-listagem.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -21,6 +20,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Lista de Cadastros</title>
+    <link rel="stylesheet" href="./css/stiloListagem.css">
+
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -42,18 +43,28 @@
         });
     });
 </script>
+<style>
+    .table .table-striped .table-dark .table-hover {
+        font-size: 28px;
+    }
+</style>
 
 <body>
+    <div class="EstH1">
+        <div class="container">
 
+            <h1>LISTAGEM DE REGISTRO MEI</h1>
+
+        </div>
+    </div>
 
 
     <div class="container-fluid mt-4 container-pai">
-        <h1 class="text-center titulo">LISTAGEM DE CADASTRO MEI</h1>
 
         <div class="row">
 
             <div class="col-md-2 mb-3 ml-auto">
-                <input type="text" class="form-control" id="pesquisa" placeholder="Pesquisar pelo nome">
+                <input type="text" class="form-control pesquisar" id="pesquisa" placeholder="Pesquisar pelo nome">
                 <i></i>
             </div>
         </div>
@@ -88,16 +99,15 @@
         <table id="tabela" class="table table-striped  table-dark table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Celular</th>
-                    <th scope="col">Ocupação Principal</th>
-                    <th scope="col">Capital</th>
-                    <th scope="col">Nome Fantasia</th>
-                    <th scope="col">Forma de Atuação</th>
-                    <th scope="col">Endereço</th>
-                    <th scope="col" class="text-center" colspan="2">Ações</th>
+                    <th class="text-center" scope="col">Nome</th>
+                    <th class="text-center" scope="col">Email</th>
+                    <th class="text-center" scope="col">CPF</th>
+                    <th class="text-center" scope="col">Celular</th>
+                    <th class="text-center" scope="col">Ocupação Principal</th>
+                    <th class="text-center" scope="col">Capital</th>
+                    <th class="text-center" scope="col">Nome Fantasia</th>
+                    <th class="text-center" scope="col">Endereço</th>
+                    <th class="text-center" scope="col" class="text-center" colspan="2">Ações</th>
                 </tr>
             </thead>
             <tbody id="tabela-cadastros">
@@ -107,19 +117,23 @@
                     // Converte a string de ocupações secundárias em um array
                     $ocupacoes_secundarias = explode(',', $row['listBox2']);
                 ?>
-                    <tr class="linha">
+                    <tr>
                         <td scope="row"><?php echo $row['nome']; ?></td>
                         <td scope="row"><?php echo $row['email']; ?></td>
                         <td scope="row"> <?php echo $row['cpf']; ?></td>
                         <td scope="row"><?php echo $row['celular']; ?></td>
                         <td scope="row"><?php echo $row['ocupacaoPrincipal']; ?></td>
                         <td scope="row"><?php echo $row['capital']; ?></td>
-                        <td scope="row"><?php echo $row['nomeFantasia']; ?></td>
-                        <td scope="row"><?php echo $row['formaAtuacao']; ?></td>
+                        <td class="text-center" scope="row"><?php echo $row['nomeFantasia']; ?></td>
                         <td scope="row"><?php echo "{$row['rua']} {$row['numero']}, {$row['bairro']} - {$row['cidade']}"; ?></td>
                         <td scope="row" class=" text-center table-secondary">
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-alterar-<?php echo $row['id']; ?>">
-                                <span class="glyphicon glyphicon-pencil"></span>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-visualizar-<?php echo $row['id']; ?>">
+                                <span class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                    </svg>
+                                </span>
                             </button>
 
                         </td>
@@ -133,11 +147,11 @@
                     </tr>
 
                     <!-- modal para alteração de dados -->
-                    <div class="modal fade" id="modal-alterar-<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-alterar-label-<?php echo $row['id']; ?>" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                    <div class="modal fade" id="modal-visualizar-<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-label-<?php echo $row['id']; ?>" aria-hidden="true">
+                        <div class="modal-dialog modal-lg " role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modal-alterar-label-<?php echo $row['id']; ?>">Alterar Cadastro</h5>
+                                    <h5 class="modal-title " id="modal-visualizar-label-<?php echo $row['id']; ?>">Vizualizar Cadastro</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -146,6 +160,11 @@
                                     <form method="post" action="alterar.php">
                                         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
+                                        <div class="col-md-12 titulo">
+                                            <div class="form-group">
+                                                <label for="celular" class="titulo">Dados Pessoais</label>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="nome">Nome:</label>
                                             <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $row['nome']; ?>">
@@ -154,78 +173,206 @@
                                             <label for="email">Email:</label>
                                             <input type="email" class="form-control" id="email" name="email" value="<?php echo $row['email']; ?>">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="cpf">CPF:</label>
-                                            <input type="text" class="form-control" id="cpf" name="cpf" value="<?php echo $row['cpf']; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="celular">Telefone:</label>
-                                            <input type="text" class="form-control" id="telefone" name="telefone" value="<?php echo $row['telefone']; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="celular">Celular:</label>
-                                            <input type="text" class="form-control" id="celular" name="celular" value="<?php echo $row['celular']; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-1 control-label">* UF Emissor</label>
-                                            <div class="col-sm-3">
-                                                <div class="dropdown bootstrap-select show-tick form-control">
-                                                    <select name="ufEmissor" class="form-select shadow-none" id="ufEmissor" required data-input>
-                                                        <option value="<?php echo $row['ufEmissor']; ?>"></option>
-                                                        <?php
-                                                        $resul_estado = "SELECT * FROM tb_estados";
-                                                        $resultado_estado = mysqli_query($conn, $resul_estado);
-                                                        while ($row_estado = mysqli_fetch_assoc($resultado_estado)) { ?>
-                                                            <option value="<?php echo $row_estado['nome'];  ?>"> <?php echo $row_estado['nome']; ?>
-                                                            </option> <?php
-                                                                    }
-                                                                        ?>
-                                                    </select>
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="cpf">CPF:</label>
+                                                    <input type="text" class="form-control" id="cpf" name="cpf" value="<?php echo $row['cpf']; ?>">
                                                 </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="celular">Telefone:</label>
+                                                    <input type="text" class="form-control" id="telefone" name="telefone" value="<?php echo $row['telefone']; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="celular">Celular:</label>
+                                                    <input type="text" class="form-control" id="celular" name="celular" value="<?php echo $row['celular']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="celular">Orgão Emissor:</label>
+                                                    <input type="text" class="form-control" id="celular" name="celular" value="<?php echo $row['orgaoEmissor']; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ufEmissor">UF Emissor</label>
+                                            <select class="selects" name="ufEmissor" id="ufEmissor" required data-input>
+                                                <option value="<?php echo $row['ufEmissor']; ?>"><?php echo $row['ufEmissor']; ?></option>
+                                                <?php
+                                                $resul_estado = "SELECT * FROM tb_estados";
+                                                $resultado_estado = mysqli_query($conn, $resul_estado);
+                                                while ($row_estado = mysqli_fetch_assoc($resultado_estado)) { ?>
+                                                    <option value="<?php echo $row_estado['nome'];  ?>"> <?php echo $row_estado['nome']; ?>
+                                                    </option> <?php
+                                                            }
+                                                                ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-12 titulo">
+                                            <div class="form-group">
+                                                <label for="celular" class="titulo">Dados do CNPJ</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="ocupacaoPrincipal">Ocupação Principal:</label>
-                                            <div class="dropdown bootstrap-select show-tick form-control">
-                                                <select name="ocupacaoPrincipal" class="selectpicker form-select shadow-none " id="ocupacaoPrincipal" required data-input>
-                                                    <option value="<?php echo $row['ocupacaoPrincipal']; ?>"></option>
-                                                    <?php
-                                                    $resul_ocupacao = "SELECT * FROM tb_ocupacao";
-                                                    $resultado_ocupacao = mysqli_query($conn, $resul_ocupacao);
-                                                    while ($row_ocupacaoP = mysqli_fetch_assoc($resultado_ocupacao)) { ?>
-                                                        <option value="<?php echo $row_ocupacaoP['ocupacao'];  ?>"> <?php echo $row_ocupacaoP['ocupacao']; ?>
-                                                        </option> <?php
-                                                                }
-                                                                    ?>
-                                                </select>
-                                            </div>
-                                            <input type="text" class="form-control" id="ocupacaoPrincipal" name="ocupacaoPrincipal" value="<?php echo $row['ocupacaoPrincipal']; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="capital">Capital:</label>
-                                            <input type="number" class="form-control" id="capital" name="capital" value="<?php echo $row['capital']; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nomeFantasia">Nome Fantasia:</label>
-                                            <input type="text" class="form-control" id="nomeFantasia" name="nomeFantasia" value="<?php echo $row['nomeFantasia']; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formaAtuacao">Forma de Atuação:</label>
-                                            <select class="form-control" id="formaAtuacao" name="formaAtuacao">
-                                                <option value="Empresa Individual" <?php if ($row['formaAtuacao'] == 'Empresa Individual') echo 'selected'; ?>>Empresa Individual</option>
-                                                <option value="Sociedade Limitada" <?php if ($row['formaAtuacao'] == 'Sociedade Limitada') echo 'selected'; ?>>Sociedade Limitada</option>
-                                                <option value="Sociedade Anônima" <?php if ($row['formaAtuacao'] == 'Sociedade Anônima') echo 'selected'; ?>>Sociedade
-                                                <option value="Sociedade de Responsabilidade Limitada" <?php if ($row['formaAtuacao'] == 'Sociedade de Responsabilidade Limitada') echo 'selected'; ?>>Sociedade de Responsabilidade Limitada</option>
+                                            <select name="ocupacaoPrincipal" class="selects" id="ocupacaoPrincipal" required data-input>
+                                                <option value="<?php echo $row['ocupacaoPrincipal']; ?>"><?php echo $row['ocupacaoPrincipal']; ?></option>
+                                                <?php
+                                                $resul_ocupacao = "SELECT * FROM tb_ocupacao";
+                                                $resultado_ocupacao = mysqli_query($conn, $resul_ocupacao);
+                                                while ($row_ocupacaoP = mysqli_fetch_assoc($resultado_ocupacao)) { ?>
+                                                    <option value="<?php echo $row_ocupacaoP['ocupacao'];  ?>"> <?php echo $row_ocupacaoP['ocupacao']; ?>
+                                                    </option> <?php
+                                                            }
+                                                                ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="cep">CEP:</label>
-                                            <input type="text" class="form-control" id="cep" name="cep" value="<?php echo $row['cep']; ?>">
+
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label for="nomeFantasia">Nome Fantasia:</label>
+                                                    <input type="text" class="form-control" id="nomeFantasia" name="nomeFantasia" value="<?php echo $row['nomeFantasia']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="capital">Capital:</label>
+                                                    <select name="capital" class="selects" id="capital" required data-input>
+                                                        <option value="<?php echo $row['capital']; ?>"><?php echo $row['capital']; ?></option>
+                                                        <option value="R$ 1.000,00">R$ 1.000,00</option>
+                                                        <option value="R$ 2.000,00">R$ 2.000,00</option>
+                                                        <option value="R$ 3.000,00">R$ 3.000,00</option>
+                                                        <option value="R$ 5.000,00">R$ 5.000,00</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="rua">Rua:</label>
-                                            <input type="text" class="form-control" id="rua" name="rua" value="<?php echo $row['rua']; ?>">
+
+                                        <label for="formaAtuacao">Forma de Atuação:</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Empresa Estabelecimento fixo" <?php if ($row['formaAtuacao'] == 'Estabelecimento fixo') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Empresa Estabelecimento fixo
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Correio" <?php if ($row['formaAtuacao'] == 'Correio') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Correio
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Máquinas automáticas" <?php if ($row['formaAtuacao'] == 'Máquinas automáticas') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Máquinas automáticas
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Internet" <?php if ($row['formaAtuacao'] == 'Internet') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Internet
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Correio" <?php if ($row['formaAtuacao'] == 'Correio') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Correio
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Postos móveis ou por ambulantes" <?php if ($row['formaAtuacao'] == 'Postos móveis ou por ambulantes') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Postos móveis ou por ambulantes
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Em local fixo fora da loja" <?php if ($row['formaAtuacao'] == 'Em local fixo fora da loja') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Em local fixo fora da loja
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Porta a porta" <?php if ($row['formaAtuacao'] == 'Porta a porta') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Porta a porta
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="Televenda" <?php if ($row['formaAtuacao'] == 'Televenda') echo 'selected'; ?>>
+                                                        <label class="form-check-label">
+                                                            Televenda
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div class="col-md-12 titulo">
+                                            <div class="form-group">
+                                                <label for="celular" class="titulo">Endereço</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="cep">CEP:</label>
+                                                    <input type="text" class="form-control" id="cep" name="cep" value="<?php echo $row['cep']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label for="rua">Rua:</label>
+                                                    <input type="text" class="form-control" id="rua" name="rua" value="<?php echo $row['rua']; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="cep">CEP:</label>
+                                                    <input type="text" class="form-control" id="cep" name="cep" value="<?php echo $row['cep']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label for="rua">Rua:</label>
+                                                    <input type="text" class="form-control" id="rua" name="rua" value="<?php echo $row['rua']; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                         <div class="form-group">
                                             <label for="numero">Número:</label>
                                             <input type="text" class="form-control" id="numero" name="numero" value="<?php echo $row['numero']; ?>">
@@ -246,9 +393,8 @@
                                             <label for="estado">Estado:</label>
                                             <input type="text" class="form-control" id="estado" name="estado" value="<?php echo $row['estado']; ?>">
                                         </div>
-                                        <div class="modal-body">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary">Alterar</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                                         </div>
                                     </form>
                                 </div>
