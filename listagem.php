@@ -116,13 +116,14 @@
                 // Loop para exibir os resultados da query
                 while ($row = mysqli_fetch_assoc($resultado)) {
                     // Converte a string de ocupações secundárias em um array
-                    $ocupacoes_secundarias = explode(',', $row['listBox2']);
-                   
+                    $ocupacoes_secundarias = explode(',', $row['ocupacaoSecundaria']);
+
                     if ($row['formaAtuacao']) {
                         $formasAtuacao = explode(',', $row['formaAtuacao']);
                     } else {
                         $formasAtuacao = array();
                     }
+
 
                 ?>
                     <tr>
@@ -175,11 +176,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="nome">Nome:</label>
-                                            <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $row['nome']; ?>">
+                                            <input readonly type="text" class="form-control" id="nome" name="nome" value="<?php echo $row['nome']; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email:</label>
-                                            <input type="email" class="form-control" id="email" name="email" value="<?php echo $row['email']; ?>">
+                                            <input readonly type="email" class="form-control" id="email" name="email" value="<?php echo $row['email']; ?>">
                                         </div>
 
 
@@ -187,13 +188,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="celular">Celular:</label>
-                                                    <input type="text" class="form-control" id="celular" name="celular" value="<?php echo $row['celular']; ?>">
+                                                    <input readonly type="text" class="form-control" id="celular" name="celular" value="<?php echo $row['celular']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="celular">Telefone:</label>
-                                                    <input type="text" class="form-control" id="telefone" name="telefone" value="<?php echo $row['telefone']; ?>">
+                                                    <input readonly type="text" class="form-control" id="telefone" name="telefone" value="<?php echo $row['telefone']; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -202,13 +203,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="cpf">CPF:</label>
-                                                    <input type="text" class="form-control" id="cpf" name="cpf" value="<?php echo $row['cpf']; ?>">
+                                                    <input readonly type="text" class="form-control" id="cpf" name="cpf" value="<?php echo $row['cpf']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="rg">RG:</label>
-                                                    <input type="text" class="form-control" id="rg" name="rg" value="<?php echo $row['rg']; ?>">
+                                                    <input readonly type="text" class="form-control" id="rg" name="rg" value="<?php echo $row['rg']; ?>">
                                                 </div>
                                             </div>
 
@@ -218,22 +219,15 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="orgaoEmissor">Orgão Emissor:</label>
-                                                    <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" value="<?php echo $row['orgaoEmissor']; ?>">
+                                                    <input readonly type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" value="<?php echo $row['orgaoEmissor']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="ufEmissor">UF Emissor</label>
-                                                    <select class="selects" name="ufEmissor" id="ufEmissor" required data-input>
-                                                        <option value="<?php echo $row['ufEmissor']; ?>"><?php echo $row['ufEmissor']; ?></option>
-                                                        <?php
-                                                        $resul_estado = "SELECT * FROM tb_estados";
-                                                        $resultado_estado = mysqli_query($conn, $resul_estado);
-                                                        while ($row_estado = mysqli_fetch_assoc($resultado_estado)) { ?>
-                                                            <option value="<?php echo $row_estado['nome'];  ?>"> <?php echo $row_estado['nome']; ?>
-                                                            </option> <?php
-                                                                    }
-                                                                        ?>
+                                                    <select class="selects" name="ufEmissor" id="ufEmissor">
+                                                        <option readonly value="<?php echo $row['ufEmissor']; ?>"><?php echo $row['ufEmissor']; ?></option>
+                                                       
                                                     </select>
                                                 </div>
                                             </div>
@@ -246,42 +240,35 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="ocupacaoPrincipal">Ocupação Principal:</label>
-                                            <select name="ocupacaoPrincipal" class="selects" id="ocupacaoPrincipal" required data-input>
+                                            <select name="ocupacaoPrincipal" class="selects" id="ocupacaoPrincipal">
                                                 <option value="<?php echo $row['ocupacaoPrincipal']; ?>"><?php echo $row['ocupacaoPrincipal']; ?></option>
-                                                <?php
-                                                $resul_ocupacao = "SELECT * FROM tb_ocupacao";
-                                                $resultado_ocupacao = mysqli_query($conn, $resul_ocupacao);
-                                                while ($row_ocupacaoP = mysqli_fetch_assoc($resultado_ocupacao)) { ?>
-                                                    <option value="<?php echo $row_ocupacaoP['ocupacao'];  ?>"> <?php echo $row_ocupacaoP['ocupacao']; ?>
-                                                    </option> <?php
-                                                            }
-                                                                ?>
+                                                
                                             </select>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="listBox2">Ocupação Secundaria:</label>
-                                            <select name="listBox2" class="selects" id="listBox2" name="listBox2[]" size="10" required data-input>
+                                            <label for="ocupacaoSecundaria">Ocupação Secundária:</label>
 
+                                            <select name="ocupacaoSecundaria" class="selects" id="ocupacaoSecundaria" name="ocupacaoSecundaria[]" size="10">
+                                                <?php foreach ($ocupacoes_secundarias as $ocupacaoSecundaria) : ?>
+                                                    <option value="<?php echo $ocupacaoSecundaria; ?>"> <?php echo $ocupacaoSecundaria; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
+
 
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="form-group">
                                                     <label for="nomeFantasia">Nome Fantasia:</label>
-                                                    <input type="text" class="form-control" id="nomeFantasia" name="nomeFantasia" value="<?php echo $row['nomeFantasia']; ?>">
+                                                    <input readonly type="text" class="form-control" id="nomeFantasia" name="nomeFantasia" value="<?php echo $row['nomeFantasia']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="capital">Capital:</label>
-                                                    <select name="capital" class="selects" id="capital" required data-input>
+                                                    <select name="capital" class="selects" id="capital">
                                                         <option value="<?php echo $row['capital']; ?>"><?php echo $row['capital']; ?></option>
-                                                        <option value="R$ 1.000,00">R$ 1.000,00</option>
-                                                        <option value="R$ 2.000,00">R$ 2.000,00</option>
-                                                        <option value="R$ 3.000,00">R$ 3.000,00</option>
-                                                        <option value="R$ 5.000,00">R$ 5.000,00</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -294,19 +281,19 @@
                                                 <div class="form-check">
 
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Estabelecimento fixo" <?php if (in_array('Estabelecimento fixo', $formasAtuacao)) echo 'checked'; ?>>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Estabelecimento fixo" <?php if (in_array('Estabelecimento fixo', $formasAtuacao)) echo 'checked'; ?>disabled>
                                                         <label class="form-check-label">
                                                             Estabelecimento fixo
                                                         </label>
                                                     </div>
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Correio" <?php if (in_array('Correio', $formasAtuacao)) echo 'checked'; ?>>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Correio" <?php if (in_array('Correio', $formasAtuacao)) echo 'checked'; ?>disabled>
                                                         <label class="form-check-label">
                                                             Correio
                                                         </label>
                                                     </div>
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Máquinas automáticas" <?php if (in_array('Máquinas automáticas', $formasAtuacao)) echo 'checked'; ?>>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Máquinas automáticas" <?php if (in_array('Máquinas automáticas', $formasAtuacao)) echo 'checked'; ?>disabled>
                                                         <label class="form-check-label">
                                                             Máquinas automáticas
                                                         </label>
@@ -318,14 +305,14 @@
                                             <div class="col-md-4">
                                                 <div class="form-check">
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Internet" <?php if (in_array('Internet', $formasAtuacao)) echo 'checked'; ?>>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Internet" <?php if (in_array('Internet', $formasAtuacao)) echo 'checked'; ?> disabled>
                                                         <label class="form-check-label">
                                                             Internet
                                                         </label>
                                                     </div>
 
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Postos móveis ou por ambulantes" <?php if (in_array('Postos móveis ou por ambulantes', $formasAtuacao)) echo 'checked'; ?>>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Postos móveis ou por ambulantes" <?php if (in_array('Postos móveis ou por ambulantes', $formasAtuacao)) echo 'checked'; ?> disabled>
                                                         <label class="form-check-label">
                                                             Postos móveis ou por ambulantes
                                                         </label>
@@ -336,19 +323,19 @@
                                             <div class="col-md-4">
                                                 <div class="form-check">
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Em local fixo fora da loja" <?php if (in_array('Em local fixo fora da loja', $formasAtuacao)) echo 'checked'; ?>>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Em local fixo fora da loja" <?php if (in_array('Em local fixo fora da loja', $formasAtuacao)) echo 'checked'; ?> disabled>
                                                         <label class="form-check-label">
                                                             Em local fixo fora da loja
                                                         </label>
                                                     </div>
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value=" Porta a porta" <?php if (in_array(' Porta a porta', $formasAtuacao)) echo 'checked'; ?>>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value=" Porta a porta" <?php if (in_array(' Porta a porta', $formasAtuacao)) echo 'checked'; ?> disabled>
                                                         <label class="form-check-label">
                                                             Porta a porta
                                                         </label>
                                                     </div>
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value=" Televenda" <?php if (in_array(' Televenda', $formasAtuacao)) echo 'checked'; ?>>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value=" Televenda" <?php if (in_array(' Televenda', $formasAtuacao)) echo 'checked'; ?> disabled>
                                                         <label class="form-check-label">
                                                             Televenda
                                                         </label>
@@ -364,19 +351,17 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="cep">CEP:</label>
-                                                    <input type="text" class="form-control" id="cep" name="cep" value="<?php echo $row['cep']; ?>">
+                                                    <input readonly type="text" class="form-control" id="cep" name="cep" value="<?php echo $row['cep']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="form-group">
                                                     <label for="rua">Rua:</label>
-                                                    <input type="text" class="form-control" id="rua" name="rua" value="<?php echo $row['rua']; ?>">
+                                                    <input readonly type="text" class="form-control" id="rua" name="rua" value="<?php echo $row['rua']; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -385,13 +370,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="numero">Número:</label>
-                                                    <input type="text" class="form-control" id="numero" name="numero" value="<?php echo $row['numero']; ?>">
+                                                    <input readonly type="text" class="form-control" id="numero" name="numero" value="<?php echo $row['numero']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="form-group">
                                                     <label for="complemento">Complemento:</label>
-                                                    <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $row['complemento']; ?>">
+                                                    <input readonly type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $row['complemento']; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -400,30 +385,23 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="bairro">Bairro:</label>
-                                                    <input type="text" class="form-control" id="bairro" name="bairro" value="<?php echo $row['bairro']; ?>">
+                                                    <input readonly type="text" class="form-control" id="bairro" name="bairro" value="<?php echo $row['bairro']; ?>">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="cidade">Cidade:</label>
-                                                    <input type="text" class="form-control" id="cidade" name="cidade" value="<?php echo $row['cidade']; ?>">
+                                                    <input readonly type="text" class="form-control" id="cidade" name="cidade" value="<?php echo $row['cidade']; ?>">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="estado">Estado</label>
-                                                    <select class="selects" name="estado" id="estado" required data-input>
+                                                    <select class="selects" name="estado" id="estado">
                                                         <option value="<?php echo $row['estado']; ?>"><?php echo $row['estado']; ?></option>
-                                                        <?php
-                                                        $resul_estado = "SELECT * FROM tb_estados";
-                                                        $resultado_estado = mysqli_query($conn, $resul_estado);
-                                                        while ($row_estado = mysqli_fetch_assoc($resultado_estado)) { ?>
-                                                            <option value="<?php echo $row_estado['nome'];  ?>"> <?php echo $row_estado['nome']; ?>
-                                                            </option> <?php
-                                                                    }
-                                                                        ?>
+                                                       
                                                     </select>
                                                 </div>
 

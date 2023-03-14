@@ -116,7 +116,7 @@ session_start();
                     }
                     ?>
                 </div>
-                <form method="POST" action="processa_dados.php">
+                <form method="POST" id="formulario" action="processa_dados.php">
                     <div class="EstH3">
                         <fieldset>
                             <br>
@@ -235,30 +235,42 @@ session_start();
 
                                 <div class="col-sm-5" id="listbox2">
                                     <div class="dropdown bootstrap-select show-tick form-control">
-                                        <select id="listBox2" class="selectpicker form-select shadow-none " name="listBox2[]" size="10"></select>
-                                        
+                                        <select id="listBox2" class="selectpicker form-select shadow-none " name="ocupacaoSecundaria[]" multiple size="10" required data-input>
+
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
-
-
                             <!-- Código JavaScript -->
                             <script>
+                                document.querySelector('#formulario').addEventListener('submit', function() {
+                                    var listBox2 = document.getElementById('listBox2');
+                                    for (var i = 0; i < listBox2.options.length; i++) {
+                                        listBox2.options[i].selected = true;
+                                    }
+                                });
+
                                 function removerItem() {
                                     var listBox2 = document.getElementById("listBox2");
                                     listBox2.remove(listBox2.selectedIndex);
                                 }
 
                                 function removerTudo() {
+                                    var listBox1 = document.getElementById("listBox1");
                                     var listBox2 = document.getElementById("listBox2");
-                                    listBox2.innerHTML = "";
+                                    while (listBox2.options.length > 0) {
+                                        var newOption = document.createElement("option");
+                                        newOption.value = listBox2.options[0].value;
+                                        newOption.text = listBox2.options[0].text;
+                                        listBox1.appendChild(newOption);
+                                        listBox2.remove(0);
+                                    }
                                 }
 
                                 function adicionar() {
                                     var listBox1 = document.getElementById("listBox1");
                                     var listBox2 = document.getElementById("listBox2");
-                                    var selectedIndex = listBox1.selectedIndex;
 
                                     // Verificar se o número de opções no listBox2 é menor que 15
                                     if (listBox2.options.length >= 15) {
@@ -266,13 +278,21 @@ session_start();
                                         return; // Sair da função sem adicionar a opção selecionada
                                     }
 
-                                    if (selectedIndex >= 0) {
-                                        var selectedOption = listBox1.options[selectedIndex];
+                                    var selectedOptions = [];
+                                    for (var i = 0; i < listBox1.options.length; i++) {
+                                        if (listBox1.options[i].selected) {
+                                            selectedOptions.push(listBox1.options[i]);
+                                        }
+                                    }
+
+                                    // Adicionar as opções selecionadas no listBox2
+                                    for (var i = 0; i < selectedOptions.length; i++) {
+                                        var selectedOption = selectedOptions[i];
 
                                         // Verificar se a opção selecionada já foi adicionada anteriormente
                                         var options = listBox2.options;
-                                        for (var i = 0; i < options.length; i++) {
-                                            if (options[i].value === selectedOption.value) {
+                                        for (var j = 0; j < options.length; j++) {
+                                            if (options[j].value === selectedOption.value) {
                                                 alert("Essa opção já foi selecionada!");
                                                 return; // Sair da função sem adicionar a opção selecionada
                                             }
@@ -282,7 +302,8 @@ session_start();
                                         newOption.value = selectedOption.value;
                                         newOption.text = selectedOption.text;
                                         listBox2.appendChild(newOption);
-                                        listBox1.remove(selectedIndex);
+
+                                        selectedOption.remove(); // Remover a opção selecionada do listBox1
                                     }
                                 }
                             </script>
