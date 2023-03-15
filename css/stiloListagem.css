@@ -6,6 +6,10 @@ body {
   );
   font-size: 23px;
 }
+
+.listagem{
+  color: white;
+}
 .container-pai {
   color: rgb(0, 0, 0);
 }
@@ -17,16 +21,10 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 4em;
 }
+
 .EstH1 {
-  background: url(../img/banner.jpg) center top;
+  background: url(../img/banner.jpg);
   margin: 0px;
-  padding: 25px 0px;
-}
-.EstH1 h1 {
-  text-align: center;
-  font-size: 70px;
-  font-weight: bold;
-  color: white;
 }
 .pesquisar {
   font-size: 25px;
@@ -54,13 +52,13 @@ body {
   padding-left: 20px;
   font-size: 14px;
 }
-.espaco{
+.espaco {
   margin-top: 20px;
 }
-.espacoBox{
+.espacoBox {
   padding: 5px;
 }
-.botao{
+.botao {
   font-size: 20px;
   border-radius: 5px;
 }

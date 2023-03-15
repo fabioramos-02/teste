@@ -11,7 +11,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h721jLWidEblokpeZs/zyQagp+8ze9X9k+nFi" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -48,8 +49,22 @@
         font-size: 28px;
     }
 </style>
+<?php
+session_start();
+if (isset($_SESSION['username'])){
+   
+
+} else {
+    $_SESSION['loginErro'] = 'Precisa realizar login';
+    header("Location: login.php");
+
+}
+
+?>
 
 <body>
+
+
     <div class="EstH1">
         <div class="container">
 
@@ -58,18 +73,36 @@
         </div>
     </div>
 
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <div class="row">
 
-    <div class="container-fluid mt-4 container-pai">
-
-        <div class="row">
-
-            <div class="col-md-2 mb-3 ml-auto">
-                <input type="text" class="form-control pesquisar" id="pesquisa" placeholder="Pesquisar pelo nome">
-                <i></i>
-            </div>
+                        <div class="col-md-12 mb-3 mt-3 ml-auto">
+                            <input type="text" class="form-control pesquisar" id="pesquisa" placeholder="Pesquisar pelo nome" autocomplete="off">
+                            <i></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="sair.php">Sair</a>
+                </li>
+            </ul>
         </div>
 
+    </nav>
+    <div class="container-fluid container-pai">
+
+
+
         <?php
+
+
         // Inclui o arquivo de configuração com a conexão ao banco de dados
         require_once 'config.php';
 
@@ -227,7 +260,7 @@
                                                     <label for="ufEmissor">UF Emissor</label>
                                                     <select class="selects" name="ufEmissor" id="ufEmissor">
                                                         <option readonly value="<?php echo $row['ufEmissor']; ?>"><?php echo $row['ufEmissor']; ?></option>
-                                                       
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -242,7 +275,7 @@
                                             <label for="ocupacaoPrincipal">Ocupação Principal:</label>
                                             <select name="ocupacaoPrincipal" class="selects" id="ocupacaoPrincipal">
                                                 <option value="<?php echo $row['ocupacaoPrincipal']; ?>"><?php echo $row['ocupacaoPrincipal']; ?></option>
-                                                
+
                                             </select>
                                         </div>
 
@@ -401,7 +434,7 @@
                                                     <label for="estado">Estado</label>
                                                     <select class="selects" name="estado" id="estado">
                                                         <option value="<?php echo $row['estado']; ?>"><?php echo $row['estado']; ?></option>
-                                                       
+
                                                     </select>
                                                 </div>
 
