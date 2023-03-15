@@ -6,8 +6,7 @@ body {
   );
   font-size: 23px;
 }
-
-.listagem{
+.listagem {
   color: white;
 }
 .container-pai {
@@ -23,8 +22,11 @@ body {
 }
 
 .EstH1 {
-  background: url(../img/banner.jpg);
+  background: url(../img/banner.jpg) ;
   margin: 0px;
+  font-size: 60px;
+  font-weight: bold;
+  color: white;
 }
 .pesquisar {
   font-size: 25px;

@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +20,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/stiloListagem.css">
 
     <title>Lista de Cadastros</title>
-    <link rel="stylesheet" href="./css/stiloListagem.css">
 
 </head>
 
@@ -51,34 +52,21 @@
 </style>
 <?php
 session_start();
-if (isset($_SESSION['username'])){
-   
-
+if (isset($_SESSION['username'])) {
 } else {
     $_SESSION['loginErro'] = 'Precisa realizar login';
     header("Location: login.php");
-
 }
 
 ?>
 
 <body>
 
-
-    <div class="EstH1">
-        <div class="container">
-
-            <h1>LISTAGEM DE REGISTRO MEI</h1>
-
-        </div>
-    </div>
-
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ">
                 <li class="nav-item">
                     <div class="row">
-
                         <div class="col-md-12 mb-3 mt-3 ml-auto">
                             <input type="text" class="form-control pesquisar" id="pesquisa" placeholder="Pesquisar pelo nome" autocomplete="off">
                             <i></i>
@@ -88,21 +76,36 @@ if (isset($_SESSION['username'])){
             </ul>
         </div>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="sair.php">Sair</a>
+            <ul class="navbar-nav ">
+                <li class="">
+                    <div class="EstH1">
+
+                        <div class="mx-auto">
+                            <span>LISTAGEM DE REGISTRO MEI</span>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
-
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class=" btn btn-danger" href="sair.php">
+                        <span>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"></path>
+                                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
+
     <div class="container-fluid container-pai">
-
-
-
         <?php
-
-
         // Inclui o arquivo de configuração com a conexão ao banco de dados
         require_once 'config.php';
 
