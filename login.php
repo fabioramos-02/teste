@@ -10,8 +10,8 @@
     <title>Login</title>
 </head>
 <?php
-session_start();
 include_once("config.php");
+session_start();
 ?>
 
 <body>
