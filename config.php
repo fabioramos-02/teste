@@ -1,9 +1,9 @@
 <?php
-    $host='LocalHost';
-    $userName= 'root';
-    $password= '';
-    $name='site-papai';
-    $conn = new mysqli($host,$userName,$password,$name);
+    // $host='LocalHost';
+    // $userName= 'root';
+    // $password= '';
+    // $name='site-papai';
+    $conn = new mysqli("avian-slice-380715:us-central1:site-papai");
 
     // Verificar se a conexão foi estabelecida com sucesso
 if (mysqli_connect_errno()) {
