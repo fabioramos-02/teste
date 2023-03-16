@@ -76,6 +76,10 @@ body {
   font-weight: bold;
   color: white;
 }
+.form-group{
+  margin: 10px;
+  padding: 10px;
+}
 .btn-style1 {
   margin: 0px;
   padding: 10px 20px;
@@ -104,34 +108,33 @@ body {
   transition: all 0.25s ease-in-out;
 }
 .form-group .form-control {
-    font-size: 20px;
-    -moz-border-radius: 1px;
-    -webkit-border-radius: 1px;
-    border-radius: 1px;
-    display: block;
-    height: auto;
-    line-height: normal;
-    text-align: left;
-    margin: 0px;
-    padding: 5px;
+  font-size: 20px;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  display: block;
+  height: auto;
+  line-height: normal;
+  text-align: left;
+  margin: 0px;
+  padding: 5px;
 }
 .form-group .form-select {
-    font-size: 15px;
-    -moz-border-radius: 1px;
-    -webkit-border-radius: 1px;
-    border-radius: 1px;
-    border: none;
-    display: block;
-    height: auto;
-    line-height: normal;
-    text-align: left;
-    margin: 0px;
+  font-size: 15px;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  border: none;
+  display: block;
+  height: auto;
+  line-height: normal;
+  text-align: left;
+  margin: 0px;
 }
-#botao{
- padding-top: 50px;
- 
+#botao {
+  padding-top: 50px;
 }
-#botao button{
+#botao button {
   width: 90%;
   margin-top: 10px;
 }

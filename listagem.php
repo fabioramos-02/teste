@@ -316,7 +316,7 @@ if (isset($_SESSION['username'])) {
                                             <div class="col-md-4">
                                                 <div class="form-check">
                                                     <div class="form-check espacoBox">
-                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Estabelecimento fixo" <?php if (in_array('Estabelecimento fixo', $formasAtuacao)) echo 'checked'; ?>disabled>
+                                                        <input class="form-check-input" name="formaAtuacao[]" type="checkbox" value="Estabelecimento fixo" <?php if (in_array('Estabelecimento fixo', $formasAtuacao)) echo 'checked '; ?> disabled>
                                                         <label class="form-check-label">
                                                             Estabelecimento fixo
                                                         </label>
