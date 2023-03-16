@@ -1,5 +1,5 @@
 <?php
-    $host='LocalHost';
+    $host='localhost';
     $userName= 'root';
     $password= '';
     $name='site-papai';

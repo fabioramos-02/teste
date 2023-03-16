@@ -39,7 +39,7 @@ CREATE TABLE `cadastro` (
   `capital` varchar(11) NOT NULL,
   `nomeFantasia` varchar(100) NOT NULL,
   `formaAtuacao` varchar(100) NOT NULL,
-  `cep` varchar(7) NOT NULL,
+  `cep` varchar(8) NOT NULL,
   `rua` varchar(100) NOT NULL,
   `bairro` varchar(100) NOT NULL,
   `complemento` varchar(45) DEFAULT NULL,

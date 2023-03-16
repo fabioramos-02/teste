@@ -60,7 +60,7 @@ $sql = "INSERT INTO cadastro (" . implode(',', $campos) . ") VALUES ('" . implod
 
 // Executa a query no banco de dados
 if ($conn->query($sql) === TRUE) {
-    header("Location: formulario.php");
+    header("Location: index.php");
     exit;
 } else {
     echo "Erro ao inserir dados: " . $conn->error;
